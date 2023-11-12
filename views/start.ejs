@@ -1,0 +1,30 @@
+<div class="container mt-5">
+  <h1 class="text-center">To Do List</h1>
+
+  <form method="POST">
+    <div class="mb-3">
+      <input type="text" class="form-control" name="task" placeholder="Insert the task" />
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+
+  <h2 class="text-center">List Tasks!</h2>
+
+  <% if (data.length <= 0) { %>
+  <div class="alert alert-info" role="alert">Congratulation! You`ve done all taskes</div>
+  <% } else if (msg1.length !== 0) { %>
+  <div class="alert alert-success" role="alert"><%= msg1 %></div>
+  <% } else if (msg2.length !== 0) { %>
+  <div class="alert alert-danger" role="alert"><%= msg2 %></div>
+  <% } %>
+
+  <div class="container">
+    <ul class="list-group">
+      <% data.forEach(t => { %>
+      <li class="list-group-item list-group-item-action fw-bold position-relative">
+        <%= t.task %> <a href="/delete/<%= t.task %>"><span class="text-danger position-absolute" style="right: 5%">X</span></a>
+      </li>
+      <% }) %>
+    </ul>
+  </div>
+</div>
